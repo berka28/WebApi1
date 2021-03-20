@@ -9,6 +9,15 @@ namespace WebApi1.Models
     {
         public bool Success { get; set; }
 
-        public dynamic Result { get; set; }
+        public LogInResponseResult Result { get; set; }
+    }
+
+    public class LogInResponseResult
+    {
+        public int Id { get; set; }
+
+        public string Email { get; set; }
+
+        public string AccessToken { get; set; }
     }
 }

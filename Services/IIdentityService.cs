@@ -11,5 +11,7 @@ namespace WebApi1.Services
         Task<bool> CreateUserAsync(RegisterModel model);
 
         Task<LogInResponseModel> LogInAsync(string email, string password);
+
+        Task<IEnumerable<UserResponse>> GetUsersAsync(RequestUser requestUser);
     }
 }

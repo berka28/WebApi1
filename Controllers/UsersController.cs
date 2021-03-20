@@ -45,5 +45,23 @@ namespace WebApi1.Controllers
 
             return new BadRequestResult();
         }
+
+        [HttpGet]
+        public async Task<IEnumerable<UserResponse>> GetUsers()
+        {
+            return await _identity.GetUsersAsync(IdentityRequestData());
+        }
+
+        private RequestUser IdentityRequestData()
+        {
+            HttpContext.Request.Headers.TryGetValue("UserId", out var _userId);
+            HttpContext.Request.Headers.TryGetValue("AccessToken", out var _accessToken);
+
+            return new RequestUser
+            {
+                UserId = int.Parse(_userId),
+                AccessToken = _accessToken
+            };
+        }
     }
 }
