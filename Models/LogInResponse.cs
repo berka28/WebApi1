@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApi1.Models
 {
-    public class LogInResponseModel
+    public class LogInResponse
     {
         public bool Success { get; set; }
 

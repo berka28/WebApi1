@@ -26,7 +26,7 @@ namespace WebApi1.Services
 
         }
 
-        public async Task<bool> CreateUserAsync(RegisterModel model)
+        public async Task<bool> CreateUserAsync(Register model)
         {
             if (!_context.Users.Any(user => user.Email == model.Email))
             {
@@ -50,7 +50,7 @@ namespace WebApi1.Services
             return false;
         }
 
-        public async Task<LogInResponseModel> LogInAsync(string email, string password)
+        public async Task<LogInResponse> LogInAsync(string email, string password)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace WebApi1.Services
                             _context.SessionTokens.Add(new SessionToken { UserId = user.Id, AccessToken = _accesstoken });
                             await _context.SaveChangesAsync();
 
-                            return new LogInResponseModel 
+                            return new LogInResponse 
                             { 
                                 Success = true, 
                                 Result = new LogInResponseResult 
@@ -95,11 +95,11 @@ namespace WebApi1.Services
             }
             catch { }
 
-            return new LogInResponseModel { Success = false};
+            return new LogInResponse { Success = false};
 
         }
 
-        public async Task<IEnumerable<UserResponse>> GetUsers(RequestUser requestUser)
+        public async Task<IEnumerable<UserResponse>> GetUsersAsync(RequestUser requestUser)
         {
             var users = new List<UserResponse>();
 

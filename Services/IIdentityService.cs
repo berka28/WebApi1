@@ -8,9 +8,9 @@ namespace WebApi1.Services
 {
     public interface IIdentityService
     {
-        Task<bool> CreateUserAsync(RegisterModel model);
+        Task<bool> CreateUserAsync(Register model);
 
-        Task<LogInResponseModel> LogInAsync(string email, string password);
+        Task<LogInResponse> LogInAsync(string email, string password);
 
         Task<IEnumerable<UserResponse>> GetUsersAsync(RequestUser requestUser);
     }

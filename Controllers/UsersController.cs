@@ -25,7 +25,7 @@ namespace WebApi1.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        public async Task<IActionResult> Register([FromBody] Register model)
         {
             if (await _identity.CreateUserAsync(model))
                 return new OkResult();
@@ -36,7 +36,7 @@ namespace WebApi1.Controllers
         [AllowAnonymous]
         [HttpPost("login")]
 
-        public async Task<IActionResult> LogIn([FromBody] LogInModel model)
+        public async Task<IActionResult> LogIn([FromBody] LogIn model)
         {
             var response = await _identity.LogInAsync(model.Email, model.Password);
 
